@@ -1,7 +1,7 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 export interface IFrontMatter {
-  id?: number;
+  order?: number;
   title?: string;
   description?: string;
   cover?: string;

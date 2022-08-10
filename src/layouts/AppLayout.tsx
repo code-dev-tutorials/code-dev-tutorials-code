@@ -1,4 +1,6 @@
 import React from 'react';
+import { Global } from '@emotion/react';
+import tw, { css } from 'twin.macro';
 import { SiteMeta } from '@/components';
 import {
   FooterBlock, HeaderBlock, MainBlock, NavBlock
@@ -11,8 +13,15 @@ interface IAppLayoutProps {
 }
 
 const AppLayout = ({ children, meta, }: IAppLayoutProps) => {
+  const globalStyles = css`
+    body {
+      ${tw` bg-blue-50 p-5 xs:(max-w-[100%]) sm:(max-w-[100%]) md:(max-w-[1024px] mx-auto) lg:(w-[1024px] mx-auto) `};
+    }
+  `;
+
   return (
     <>
+      <Global styles={globalStyles} />
       <SiteMeta meta={meta} />
       <HeaderBlock />
       <NavBlock />

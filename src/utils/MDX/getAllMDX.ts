@@ -13,7 +13,7 @@ export const getAllMDX = (year: string, month: string): IMDX[] => {
     const newData: IFrontMatter = { ...data, };
 
     const frontMatter: IFrontMatter = {
-      id: newData.id,
+      order: newData.order,
       title: newData.title,
       description: newData.description,
       cover: newData.cover,
