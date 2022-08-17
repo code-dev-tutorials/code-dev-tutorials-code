@@ -1,13 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { GoListOrdered } from 'react-icons/go';
 import { BiCollapse, BiExpand } from 'react-icons/bi';
 import { TbBinary, TbDatabase } from 'react-icons/tb';
 import { SiHtml5, SiJavascript, SiReact } from 'react-icons/si';
 import tw, { css } from 'twin.macro';
 import { IPosts } from '@/types';
-import { Block, Header } from '@/components/Base';
+import { Block } from '@/components/Base';
 import { Course, CourseGroup } from '.';
-import { mediaFontHeader, mediaFontNormal } from '@/styles';
+import { mediaFontNormal } from '@/styles';
 
 interface IPostListProps {
   posts: IPosts;
@@ -44,40 +43,25 @@ export const PostList = ({ posts, hide, }: IPostListProps) => {
   }, [ isHide, word, ]);
 
   const buttonStyle = css`
-    ${tw` flex flex-row items-center justify-end mb-5 `}
+    ${mediaFontNormal}
+    ${tw` w-full flex flex-row items-center justify-center bg-royal-blue-100 text-royal-blue-500 p-2.5 rounded-2.5 hover:bg-royal-blue-500 hover:text-white `}
+    ${isHide ? '' : tw` mb-10 `}
 
-    & > button {
-      ${mediaFontNormal}
-      ${tw` flex flex-row items-center justify-center bg-royal-blue-100 text-royal-blue-500 p-2.5 rounded-2.5 hover:bg-royal-blue-500 hover:text-white `}
-
-      & > svg {
-        ${tw` mr-[5px] text-[130%] `}
-      }
-    }
-  `;
-
-  const headerStyle = css`
-    ${mediaFontHeader}
-    ${tw` bg-royal-blue-500 text-white p-2.5 rounded-2.5 mb-10 `}
-
-    & > span {
-      ${tw` flex flex-row items-center justify-start `}
-
-      & > svg {
-        ${tw` mr-[5px] `}
-      }
+    & > svg {
+      ${tw` mr-[5px] text-[130%] `}
     }
   `;
 
   return (
     <>
       <Block Type='aside'>
-        <div css={buttonStyle}>
-          <button type='button' onClick={onClickHide}>{icon}목록 {word}</button>
-        </div>
-        <Header styles={headerStyle}>
-          <span><GoListOrdered />전체 코스 목록</span>
-        </Header>
+        <button
+          type='button'
+          onClick={onClickHide}
+          css={buttonStyle}
+        >
+          {icon}전체 코스 목록 {word}
+        </button>
         {isHide === false && (
           <>
             <CourseGroup title='프로그래밍 사전지식' icon={<TbBinary />}>

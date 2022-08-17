@@ -15,7 +15,7 @@ interface IAppLayoutProps {
 const AppLayout = ({ children, meta, }: IAppLayoutProps) => {
   const globalStyles = css`
     body {
-      ${tw` bg-royal-blue-50 p-5 xs:max-w-full sm:max-w-full md:max-w-[1024px] md:mx-auto lg:w-[1024px] lg:mx-auto `};
+      ${tw` bg-royal-blue-50/60 p-5 xs:max-w-full sm:max-w-full md:max-w-[1024px] md:mx-auto lg:w-[1024px] lg:mx-auto `};
     }
   `;
 

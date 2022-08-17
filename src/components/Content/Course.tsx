@@ -5,6 +5,7 @@ import { FaFolder, FaFolderOpen } from 'react-icons/fa';
 import { IMDX } from '@/types';
 import { Header } from '../Base';
 import { CourseItem } from './CourseItem';
+import { mediaFontNormal } from '@/styles';
 
 interface ICourseProps {
   title: string;
@@ -41,6 +42,11 @@ export const Course = ({ title, posts, }: ICourseProps) => {
     }
   `;
 
+  const noPostStyle = css`
+    ${mediaFontNormal}
+    ${tw` text-gray-400/60 `}
+  `;
+
   return (
     <>
       <div css={boxStyle}>
@@ -55,7 +61,7 @@ export const Course = ({ title, posts, }: ICourseProps) => {
             </CourseItem>
           ))}
           {posts.length === 0 && (
-            <p tw='text-gray-400/60'>글이 없습니다.</p>
+            <p css={noPostStyle}>글이 없습니다.</p>
           )}
         </div>
       </div>

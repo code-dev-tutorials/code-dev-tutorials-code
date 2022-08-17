@@ -5,7 +5,6 @@ import AppLayout from '@/layouts/AppLayout';
 import {
   getJSBackMDX, getJSExtendMDX, getJSFrontMDX, getProgrammingMDX, getWebBasicMDX
 } from '@/utils/MDX';
-import { Block } from '@/components/Base';
 import { PostList } from '@/components/Content';
 import { IPosts } from '@/types';
 
@@ -23,9 +22,6 @@ const IndexPage = ({ posts, }: IIndexPageProps) => {
     <>
       <AppLayout meta={meta}>
         <div id='index-page'>
-          <Block>
-            <p>테스트</p>
-          </Block>
           <PostList posts={posts} hide={false} />
         </div>
       </AppLayout>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from '@emotion/react';
+import { css } from 'twin.macro';
 
 export const HeaderBlock = () => {
   const HeaderBlockStyle = css``;
