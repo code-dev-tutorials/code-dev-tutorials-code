@@ -13,9 +13,6 @@
       "@/components/*": [
         "./src/components/*"
       ],
-      "@/store/*": [
-        "./src/store/*"
-      ],
       "@/styles/*": [
         "./src/styles/*"
       ],
@@ -24,9 +21,6 @@
       ],
       "@/hooks/*": [
         "./src/hooks/*"
-      ],
-      "@/reducers/*": [
-        "./src/reducers/*"
       ],
       "@/utils/*": [
         "./src/utils/*"
@@ -39,9 +33,6 @@
       ],
       "@/layouts/*": [
         "./src/layouts/*"
-      ],
-      "@/actions/*": [
-        "./src/actions/*"
       ],
       "@/types/*": [
         "./src/types/*"

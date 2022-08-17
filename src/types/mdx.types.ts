@@ -1,4 +1,7 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import {
+  IJSBack, IJSExtendsPosts, IJSFrontPosts, IProgrammingPosts, IWebBasicPosts
+} from '@/utils/MDX';
 
 export interface IFrontMatter {
   order?: number;
@@ -23,4 +26,12 @@ export interface ISlug {
   frontMatter: IFrontMatter;
   source: MDXRemoteSerializeResult;
   slug: string;
+}
+
+export interface IPosts {
+  programming: IProgrammingPosts;
+  webBasic: IWebBasicPosts;
+  jsExtends: IJSExtendsPosts;
+  jsFront: IJSFrontPosts;
+  jsBack: IJSBack;
 }

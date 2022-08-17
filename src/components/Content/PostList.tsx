@@ -1,27 +1,115 @@
-import React from 'react';
-import tw, { css } from 'twin.macro';
+import React, { useCallback, useEffect, useState } from 'react';
 import { GoListOrdered } from 'react-icons/go';
-import { Block, Header } from '../Base';
+import { BiCollapse, BiExpand } from 'react-icons/bi';
+import { TbBinary, TbDatabase } from 'react-icons/tb';
+import { SiHtml5, SiJavascript, SiReact } from 'react-icons/si';
+import tw, { css } from 'twin.macro';
+import { IPosts } from '@/types';
+import { Block, Header } from '@/components/Base';
+import { Course, CourseGroup } from '.';
+import { mediaFontHeader, mediaFontNormal } from '@/styles';
 
 interface IPostListProps {
-  children: React.ReactNode;
+  posts: IPosts;
+  hide: boolean;
 }
 
-export const PostList = () => {
-  const PostListStyle = css``;
+export const PostList = ({ posts, hide, }: IPostListProps) => {
+  const [ isHide, setIsHide, ] = useState<boolean>(null);
+  const [ word, setWord, ] = useState('');
+  const [ icon, setIcon, ] = useState<React.ReactElement>(null);
 
-  const PostListHeaderStyle = css`
-    ${tw` flex flex-row items-center justify-center px-5 py-2.5 bg-blue-600 text-white font-[700] rounded-5 `};
+  useEffect(() => {
+    if (hide) {
+      setIsHide(true);
+      setWord('펼치기');
+      setIcon(<BiExpand />);
+    } else {
+      setIsHide(false);
+      setWord('접기');
+      setIcon(<BiCollapse />);
+    }
+  }, []);
 
-    & > svg {
-      ${tw` mt-[5px] mr-[5px] `};
+  const onClickHide = useCallback(() => {
+    if (isHide) {
+      setIsHide(false);
+      setWord('접기');
+      setIcon(<BiCollapse />);
+    } else {
+      setIsHide(true);
+      setWord('펼치기');
+      setIcon(<BiExpand />);
+    }
+  }, [ isHide, word, ]);
+
+  const buttonStyle = css`
+    ${tw` flex flex-row items-center justify-end mb-5 `}
+
+    & > button {
+      ${mediaFontNormal}
+      ${tw` flex flex-row items-center justify-center bg-royal-blue-100 text-royal-blue-500 p-2.5 rounded-2.5 hover:bg-royal-blue-500 hover:text-white `}
+
+      & > svg {
+        ${tw` mr-[5px] text-[130%] `}
+      }
+    }
+  `;
+
+  const headerStyle = css`
+    ${mediaFontHeader}
+    ${tw` bg-royal-blue-500 text-white p-2.5 rounded-2.5 mb-10 `}
+
+    & > span {
+      ${tw` flex flex-row items-center justify-start `}
+
+      & > svg {
+        ${tw` mr-[5px] `}
+      }
     }
   `;
 
   return (
     <>
-      <Block Type='aside' styles={PostListStyle}>
-        <Header styles={PostListHeaderStyle}><GoListOrdered />전체 코스 목록</Header>
+      <Block Type='aside'>
+        <div css={buttonStyle}>
+          <button type='button' onClick={onClickHide}>{icon}목록 {word}</button>
+        </div>
+        <Header styles={headerStyle}>
+          <span><GoListOrdered />전체 코스 목록</span>
+        </Header>
+        {isHide === false && (
+          <>
+            <CourseGroup title='프로그래밍 사전지식' icon={<TbBinary />}>
+              <Course title='프로그래밍' posts={posts.programming.ProgrammingPosts} />
+              <Course title='웹과 인터넷' posts={posts.programming.WebInternetPosts} />
+            </CourseGroup>
+            <CourseGroup title='웹 개발의 기본' icon={<SiHtml5 />}>
+              <Course title='HTML' posts={posts.webBasic.htmlPosts} />
+              <Course title='CSS' posts={posts.webBasic.cssPosts} />
+              <Course title='JavaScript' posts={posts.webBasic.jsPosts} />
+            </CourseGroup>
+            <CourseGroup title='자바스크립트 심화' icon={<SiJavascript />}>
+              <Course title='TypeScript' posts={posts.jsExtends.tsPosts} />
+              <Course title='NodeJS' posts={posts.jsExtends.nodePosts} />
+              <Course title='Webpack' posts={posts.jsExtends.webpackPosts} />
+            </CourseGroup>
+            <CourseGroup title='JS 프론트엔드' icon={<SiReact />}>
+              <Course title='ReactJS' posts={posts.jsFront.reactPosts} />
+              <Course title='NextJS' posts={posts.jsFront.nextPosts} />
+              <Course title='VueJS' posts={posts.jsFront.vuePosts} />
+              <Course title='NuxtJS' posts={posts.jsFront.nuxtPosts} />
+              <Course title='SCSS' posts={posts.jsFront.scssPosts} />
+              <Course title='Emotion' posts={posts.jsFront.emotionPosts} />
+              <Course title='StyledComponents' posts={posts.jsFront.styledComponentsPosts} />
+              <Course title='TailwindCSS' posts={posts.jsFront.tailwindPosts} />
+            </CourseGroup>
+            <CourseGroup title='JS 백엔드' icon={<TbDatabase />}>
+              <Course title='ExpressJS' posts={posts.jsBack.expressPosts} />
+              <Course title='NestJS' posts={posts.jsBack.nestPosts} />
+            </CourseGroup>
+          </>
+        )}
       </Block>
     </>
   );

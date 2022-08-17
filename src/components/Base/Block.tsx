@@ -10,7 +10,7 @@ interface IBlockProps {
 
 export const Block = ({ children, Type = 'div', styles, }: IBlockProps) => {
   const BlockStyle = css`
-    ${tw` bg-white p-5 rounded-5 shadow-lg shadow-black-900/30 `};
+    ${tw` bg-white p-5 rounded-5 shadow-lg shadow-blue-800/30 `};
     ${styles};
   `;
 
