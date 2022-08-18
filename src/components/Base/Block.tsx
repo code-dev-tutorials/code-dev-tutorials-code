@@ -1,6 +1,7 @@
 import { SerializedStyles } from '@emotion/react';
 import React from 'react';
 import tw, { css } from 'twin.macro';
+import { mediaFontNormal } from '@/styles';
 
 interface IBlockProps {
   children: React.ReactNode;
@@ -10,7 +11,8 @@ interface IBlockProps {
 
 export const Block = ({ children, Type = 'div', styles, }: IBlockProps) => {
   const BlockStyle = css`
-    ${tw` bg-white p-5 rounded-2.5 shadow-lg shadow-blue-800/30 `};
+    ${mediaFontNormal}
+    ${tw` bg-white p-5 rounded-2.5 shadow-lg shadow-blue-800/30 tracking-tighter `};
     ${styles};
   `;
 

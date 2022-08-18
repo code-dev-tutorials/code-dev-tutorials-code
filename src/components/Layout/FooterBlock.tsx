@@ -12,7 +12,7 @@ export const FooterBlock = () => {
   const year = currentYear > startYear ? `2022-${currentYear}` : '2022';
 
   const FooterBlockStyle = css`
-    ${tw` mt-[50px] text-2xl text-black-700 `}
+    ${tw` mt-[50px] text-2xl text-black-700 tracking-tighter `}
   `;
 
   const linkStyle = css`

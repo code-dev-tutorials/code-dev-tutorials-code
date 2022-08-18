@@ -1,12 +1,19 @@
 import React from 'react';
-import { css } from 'twin.macro';
+import tw, { css } from 'twin.macro';
+import { Block } from '../Base';
+import CoDev from '@/images/CoDev.svg';
 
 export const HeaderBlock = () => {
-  const HeaderBlockStyle = css``;
+  const HeaderBlockStyle = css`
+  `;
 
   return (
     <>
-      <header css={HeaderBlockStyle}>헤더</header>
+      <Block Type='header' styles={HeaderBlockStyle}>
+        <div>
+          <CoDev />
+        </div>
+      </Block>
     </>
   );
 };

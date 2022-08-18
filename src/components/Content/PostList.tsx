@@ -44,7 +44,7 @@ export const PostList = ({ posts, hide, }: IPostListProps) => {
 
   const buttonStyle = css`
     ${mediaFontNormal}
-    ${tw` w-full flex flex-row items-center justify-center bg-royal-blue-100 text-royal-blue-500 p-2.5 rounded-2.5 hover:bg-royal-blue-500 hover:text-white `}
+    ${tw` w-full flex flex-row items-center justify-center bg-royal-blue-100 text-royal-blue-500 p-2.5 rounded-2.5 hover:bg-royal-blue-500 hover:text-white tracking-tighter `}
     ${isHide ? '' : tw` mb-10 `}
 
     & > svg {
