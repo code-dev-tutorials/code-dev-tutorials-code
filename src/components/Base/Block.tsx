@@ -12,7 +12,7 @@ interface IBlockProps {
 export const Block = ({ children, Type = 'div', styles, }: IBlockProps) => {
   const BlockStyle = css`
     ${mediaFontNormal}
-    ${tw` bg-white p-5 rounded-2.5 shadow-lg shadow-blue-800/30 tracking-tighter `};
+    ${tw` bg-white p-5 rounded-2.5 shadow-md shadow-blue-800/30 tracking-tighter border border-black-500/20 `};
     ${styles};
   `;
 

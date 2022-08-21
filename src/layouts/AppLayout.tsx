@@ -3,7 +3,7 @@ import { Global } from '@emotion/react';
 import tw, { css } from 'twin.macro';
 import { SiteMeta } from '@/components';
 import {
-  FooterBlock, HeaderBlock, MainBlock, NavBlock
+  FooterBlock, HeaderBlock, MainBlock
 } from '@/components/Layout';
 import { ISiteMeta } from '@/hooks';
 
@@ -24,7 +24,6 @@ const AppLayout = ({ children, meta, }: IAppLayoutProps) => {
       <Global styles={globalStyles} />
       <SiteMeta meta={meta} />
       <HeaderBlock />
-      <NavBlock />
 
       <MainBlock>
         {children}

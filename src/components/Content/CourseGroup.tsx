@@ -10,7 +10,7 @@ interface ICourseGroupProps {
 
 export const CourseGroup = ({ children, title, icon, }: ICourseGroupProps) => {
   const headerStyle = css`
-    ${tw` text-black-700 pb-2.5 mt-5 tracking-tighter `}
+    ${tw` text-black-700 pb-2.5 mt-10 tracking-tighter `}
 
     & > span {
       ${tw` inline-flex items-center justify-start `}

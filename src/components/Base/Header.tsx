@@ -14,13 +14,13 @@ export const Header = ({ children, Type = 'h2', styles, }: IHeaderProps) => {
     h2: tw`text-[140%]`,
     h3: tw`text-[110%]`,
     h4: tw`text-[80%]`,
-    h5: tw`text-[60%]`,
-    h6: tw`text-[40%]`,
+    h5: tw`text-[70%]`,
+    h6: tw`text-[60%]`,
   };
 
   const HeaderStyle = css`
     ${mediaFontHeader};
-    ${tw` font-bold `};
+    ${tw` font-bold tracking-tighter text-black-700 `};
 
     & > span {
       ${headerSizes[Type]};

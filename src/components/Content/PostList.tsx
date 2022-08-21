@@ -5,7 +5,7 @@ import { SiHtml5, SiJavascript, SiReact } from 'react-icons/si';
 import tw, { css } from 'twin.macro';
 import { IPosts } from '@/types';
 import { Block } from '@/components/Base';
-import { Course, CourseGroup } from '.';
+import { Course, CourseGroup } from './index';
 import { mediaFontNormal } from '@/styles';
 
 interface IPostListProps {
@@ -44,7 +44,7 @@ export const PostList = ({ posts, hide, }: IPostListProps) => {
 
   const buttonStyle = css`
     ${mediaFontNormal}
-    ${tw` w-full flex flex-row items-center justify-center bg-royal-blue-100 text-royal-blue-500 p-2.5 rounded-2.5 hover:bg-royal-blue-500 hover:text-white tracking-tighter `}
+    ${tw` w-full flex flex-row items-center justify-center bg-royal-blue-100 text-royal-blue-500 p-2.5 rounded-2.5 border border-royal-blue-500/20 hover:border-royal-blue-500 hover:bg-royal-blue-500 hover:text-white tracking-tighter `}
     ${isHide ? '' : tw` mb-10 `}
 
     & > svg {
@@ -65,8 +65,15 @@ export const PostList = ({ posts, hide, }: IPostListProps) => {
         {isHide === false && (
           <>
             <CourseGroup title='프로그래밍 사전지식' icon={<TbBinary />}>
-              <Course title='프로그래밍' posts={posts.programming.ProgrammingPosts} />
-              <Course title='웹과 인터넷' posts={posts.programming.WebInternetPosts} />
+              <Course
+                title='Programming'
+                posts={posts.programming.ProgrammingPosts}
+              />
+              <Course
+                title='Web &amp; Internet'
+                link='WebInternet'
+                posts={posts.programming.WebInternetPosts}
+              />
             </CourseGroup>
             <CourseGroup title='웹 개발의 기본' icon={<SiHtml5 />}>
               <Course title='HTML' posts={posts.webBasic.htmlPosts} />
@@ -84,8 +91,8 @@ export const PostList = ({ posts, hide, }: IPostListProps) => {
               <Course title='VueJS' posts={posts.jsFront.vuePosts} />
               <Course title='NuxtJS' posts={posts.jsFront.nuxtPosts} />
               <Course title='SCSS' posts={posts.jsFront.scssPosts} />
-              <Course title='Emotion' posts={posts.jsFront.emotionPosts} />
               <Course title='StyledComponents' posts={posts.jsFront.styledComponentsPosts} />
+              <Course title='Emotion' posts={posts.jsFront.emotionPosts} />
               <Course title='TailwindCSS' posts={posts.jsFront.tailwindPosts} />
             </CourseGroup>
             <CourseGroup title='JS 백엔드' icon={<TbDatabase />}>
