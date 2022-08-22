@@ -18,9 +18,6 @@ export const MDXComponents = {
   h4: (props: Props) => (
     <PostHeader type='h5'>{props.children}</PostHeader>
   ),
-  h5: (props: Props) => (
-    <PostHeader type='h6'>{props.children}</PostHeader>
-  ),
   p: (props: Props) => (
     <PostP>{props.children}</PostP>
   ),

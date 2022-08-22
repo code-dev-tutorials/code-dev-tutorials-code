@@ -37,6 +37,7 @@
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
+    "unified": "^10.1.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

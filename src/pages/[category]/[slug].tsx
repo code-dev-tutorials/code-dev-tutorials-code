@@ -1,13 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
-import { MDXRemote } from 'next-mdx-remote';
 import tw, { css } from 'twin.macro';
 import { getAllTimeMDX, getMDX } from '@/utils/MDX';
 import { useSiteMeta } from '@/hooks';
 import { ISlug } from '@/types';
 import AppLayout from '@/layouts/AppLayout';
 import { Block } from '@/components/Base';
-import { MDXComponents, PageNav, PostInfo } from '@/components/Content';
+import { PageNav, PostContent, PostInfo } from '@/components/Content';
 import { getDate } from '@/utils';
 
 interface ICategorySlugPageProps {
@@ -42,7 +41,7 @@ const CategorySlugPage = ({ post, }: ICategorySlugPageProps) => {
             <PostInfo name='수정일'>{getDate(frontMatter.updated as number)}</PostInfo>
           </Block>
           <Block>
-            <MDXRemote {...source} components={MDXComponents} />
+            <PostContent source={source} frontMatter={frontMatter} />
           </Block>
         </div>
       </AppLayout>

@@ -12,7 +12,7 @@ interface IPageNavProps {
 export const PageNav = ({ category, title, }: IPageNavProps) => {
   const naviStyle = css`
     & > a {
-      ${tw` text-royal-blue-400 hover:text-royal-blue-700 hover:underline mr-[5px] `}
+      ${tw` text-royal-blue-400 hover:text-royal-blue-600 hover:underline mr-[5px] `}
     }
 
     & > svg {

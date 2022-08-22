@@ -6,3 +6,5 @@ export * from './CategoryData';
 export * from './PageNav';
 export * from './MDXComponents';
 export * from './PostInfo';
+export * from './PostContent';
+export * from './PostToc';
