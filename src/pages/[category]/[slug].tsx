@@ -47,6 +47,7 @@ const CategorySlugPage = ({ post, posts, }: ICategorySlugPageProps) => {
           </Block>
           <Block styles={boxStyle}>
             <PostContent source={source} frontMatter={frontMatter} />
+            <div>덧글 영역</div>
           </Block>
           <PostList posts={posts} />
         </div>

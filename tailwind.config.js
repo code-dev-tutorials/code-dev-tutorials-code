@@ -11,6 +11,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [ 'Noto Sans KR', 'sans-serif', ],
+        code: [ 'Cascadia Code', 'sans-serif', ],
       },
       screens: {
         xs: { max: '479px', },

@@ -2,19 +2,24 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import tw, { css } from 'twin.macro';
 import { v4 as uuid } from 'uuid';
-import { getCategoryList, getCategoryMDX } from '@/utils/MDX';
-import { IMDX } from '@/types';
+import {
+  getCategoryList, getCategoryMDX, getJSBackMDX, getJSExtendMDX, getJSFrontMDX, getProgrammingMDX, getWebBasicMDX
+} from '@/utils/MDX';
+import { IMDX, IPosts } from '@/types';
 import AppLayout from '@/layouts/AppLayout';
 import { useSiteMeta } from '@/hooks';
 import { Block, Header } from '@/components/Base';
-import { CategoryData, CourseItem, PageNav } from '@/components/Content';
+import {
+  CategoryData, CourseItem, PageNav, PostList
+} from '@/components/Content';
 
 interface ICategoryIndexProps {
   posts: IMDX[];
   category: string;
+  allPosts: IPosts;
 }
 
-const CategoryIndexPage = ({ posts, category, }: ICategoryIndexProps) => {
+const CategoryIndexPage = ({ posts, category, allPosts, }: ICategoryIndexProps) => {
   const categoryString = category === 'WebInternet' ? 'Web & Internet' : category;
 
   const headerStyle = css`
@@ -25,7 +30,7 @@ const CategoryIndexPage = ({ posts, category, }: ICategoryIndexProps) => {
     ${tw` mt-10 pt-5 border-t border-gray-400/60 `}
   `;
 
-  const navBoxStyle = css`
+  const boxStyle = css`
     ${tw` mb-5 `}
   `;
 
@@ -37,10 +42,10 @@ const CategoryIndexPage = ({ posts, category, }: ICategoryIndexProps) => {
     <>
       <AppLayout meta={meta}>
         <div id='category-page'>
-          <Block styles={navBoxStyle}>
+          <Block styles={boxStyle}>
             <PageNav category={category} />
           </Block>
-          <Block>
+          <Block styles={boxStyle}>
             <Header styles={headerStyle}>{categoryString}</Header>
             <CategoryData category={category} />
             <div css={postsStyle}>
@@ -51,6 +56,7 @@ const CategoryIndexPage = ({ posts, category, }: ICategoryIndexProps) => {
               ))}
             </div>
           </Block>
+          <PostList posts={allPosts} />
         </div>
       </AppLayout>
     </>
@@ -78,11 +84,23 @@ type Params = {
 
 export const getStaticProps: GetStaticProps = async ({ params: { category, }, }: Params) => {
   const posts = getCategoryMDX(category);
+  const programming = getProgrammingMDX();
+  const webBasic = getWebBasicMDX();
+  const jsExtends = getJSExtendMDX();
+  const jsFront = getJSFrontMDX();
+  const jsBack = getJSBackMDX();
 
   return {
     props: {
       posts,
       category,
+      allPosts: {
+        programming,
+        webBasic,
+        jsExtends,
+        jsFront,
+        jsBack,
+      },
     },
   };
 };

@@ -8,7 +8,7 @@ interface IPostPProps {
 
 export const PostP = ({ children, }: IPostPProps) => {
   const postPStyle = css`
-    ${tw` mb-5 nth-last-1:mb-0 `}
+    ${tw` mb-[30px] `}
   `;
 
   return (

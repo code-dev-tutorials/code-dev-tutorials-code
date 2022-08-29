@@ -1,5 +1,6 @@
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkUnwrapImages from 'remark-unwrap-images';
+import remarkPrism from 'remark-prism';
 import { ISlug } from '@/types';
 import { getAllTimeMDX } from './getAllTimeMDX';
 
@@ -12,6 +13,7 @@ export const getMDX = async (slug: string): Promise<ISlug> => {
     mdxOptions: {
       remarkPlugins: [
         remarkUnwrapImages,
+        remarkPrism,
       ],
       rehypePlugins: [],
     },

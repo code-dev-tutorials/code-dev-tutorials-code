@@ -9,7 +9,7 @@ interface IPostImageProps {
 
 export const PostImage = ({ src, alt, }: IPostImageProps) => {
   const imageStyle = css`
-    ${tw` text-center p-2.5 bg-royal-blue-50/50 rounded-2.5 border-2 border-royal-blue-100 `}
+    ${tw` my-10 text-center p-2.5 bg-royal-blue-50/50 rounded-2.5 border-2 border-royal-blue-100 `}
 
     & > img {
       ${tw` mx-auto rounded-2.5 border-2 border-black-700/50 `}

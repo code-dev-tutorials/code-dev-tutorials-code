@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  PostHeader, PostP, PostImage, Strong, Em, Code
+  PostHeader, PostP, PostImage, Strong, Em, Code, PostCodeBlock, List
 } from '../Post';
 
 interface Props {
-  [x: string]: string;
+  [x: string]: any;
 }
 
 export const MDXComponents = {
@@ -29,9 +29,17 @@ export const MDXComponents = {
   strong: (props: Props) => (<Strong>{props.children}</Strong>),
   em: (props: Props) => (<Em>{props.children}</Em>),
   code: (props: Props) => (<Code>{props.children}</Code>),
+  pre: (props: Props) => (
+    <PostCodeBlock className={props.className}>{props.children}</PostCodeBlock>
+  ),
+  ul: (props: Props) => (<List type='ul'>{props.children}</List>),
+  ol: (props: Props) => (<List type='ol'>{props.children}</List>),
   PostHeader,
   PostP,
   PostImage,
   Strong,
   Em,
+  Code,
+  PostCodeBlock,
+  List,
 };

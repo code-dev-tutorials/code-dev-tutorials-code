@@ -6,3 +6,5 @@ export * from './PostImage';
 export * from './Strong';
 export * from './Em';
 export * from './Code';
+export * from './PostCodeBlock';
+export * from './List';
