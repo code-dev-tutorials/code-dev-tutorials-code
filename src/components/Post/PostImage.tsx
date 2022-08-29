@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaImage } from 'react-icons/fa';
+import { FaExpand, FaImage } from 'react-icons/fa';
 import tw, { css } from 'twin.macro';
 
 interface IPostImageProps {
@@ -24,7 +24,11 @@ export const PostImage = ({ src, alt, }: IPostImageProps) => {
     }
 
     & > a {
-      ${tw` mt-2.5 border-2 border-royal-blue-500/20 bg-royal-blue-100 px-2.5 py-1 text-royal-blue-500 rounded-2.5 inline-block text-[90%] hover:bg-royal-blue-500 hover:text-white hover:border-royal-blue-500 `}
+      ${tw` w-[40%] mt-2.5 border-2 border-royal-blue-500/20 bg-royal-blue-100 px-2.5 py-1 text-royal-blue-500 rounded-1.5 inline-block text-[90%] hover:bg-royal-blue-500 hover:text-white hover:border-royal-blue-500 `}
+
+      & > svg {
+        ${tw` inline-block mt-[-5px] mr-[5px] `}
+      }
     }
   `;
 
@@ -34,7 +38,9 @@ export const PostImage = ({ src, alt, }: IPostImageProps) => {
         <img src={src} alt={alt} />
         <figcaption><FaImage />{alt}</figcaption>
 
-        <a href={src} target='_blank' rel='noreferrer noopener'>크게 보기</a>
+        <a href={src} target='_blank' rel='noreferrer noopener'>
+          <FaExpand />크게 보기
+        </a>
       </figure>
     </>
   );
