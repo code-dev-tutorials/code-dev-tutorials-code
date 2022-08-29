@@ -9,7 +9,7 @@ import { PostList } from '@/components/Content';
 import { IPosts } from '@/types';
 
 interface IIndexPageProps {
-  posts: IPosts
+  posts: IPosts;
 }
 
 const IndexPage = ({ posts, }: IIndexPageProps) => {

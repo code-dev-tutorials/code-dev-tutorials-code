@@ -10,10 +10,10 @@ import { mediaFontNormal } from '@/styles';
 
 interface IPostListProps {
   posts: IPosts;
-  hide: boolean;
+  hide?: boolean;
 }
 
-export const PostList = ({ posts, hide, }: IPostListProps) => {
+export const PostList = ({ posts, hide = true, }: IPostListProps) => {
   const [ isHide, setIsHide, ] = useState<boolean>(null);
   const [ word, setWord, ] = useState('');
   const [ icon, setIcon, ] = useState<React.ReactElement>(null);

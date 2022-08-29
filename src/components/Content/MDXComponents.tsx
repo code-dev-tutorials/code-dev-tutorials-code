@@ -1,5 +1,6 @@
 import React from 'react';
 import { PostHeader, PostP } from '../Post';
+import { PostImage } from '../Post/PostImage';
 
 interface Props {
   [x: string]: string;
@@ -20,6 +21,9 @@ export const MDXComponents = {
   ),
   p: (props: Props) => (
     <PostP>{props.children}</PostP>
+  ),
+  img: (props: Props) => (
+    <PostImage src={props.src} alt={props.alt} />
   ),
   PostHeader,
   PostP,

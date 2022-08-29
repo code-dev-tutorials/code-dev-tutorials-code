@@ -3,12 +3,22 @@ import tw, { css } from 'twin.macro';
 import Link from 'next/link';
 import { FaHome } from 'react-icons/fa';
 import { BiErrorCircle } from 'react-icons/bi';
+import { GetStaticProps } from 'next';
 import { useSiteMeta } from '@/hooks';
 import AppLayout from '@/layouts/AppLayout';
 import { Block, Header } from '@/components/Base';
 import { mediaFontNormal } from '@/styles';
+import { PostList } from '@/components/Content';
+import {
+  getJSBackMDX, getJSExtendMDX, getJSFrontMDX, getProgrammingMDX, getWebBasicMDX
+} from '@/utils/MDX';
+import { IPosts } from '@/types';
 
-const NotPound404 = () => {
+interface I404Props {
+  posts: IPosts;
+}
+
+const NotPound404 = ({ posts, }: I404Props) => {
   const headerStyle = css`
     ${tw` mb-5 text-center `}
 
@@ -34,6 +44,10 @@ const NotPound404 = () => {
     }
   `;
 
+  const blockStyle = css`
+    ${tw` mb-5 `}
+  `;
+
   const meta = useSiteMeta({
     title: '에러 404',
     url: '/404',
@@ -43,17 +57,38 @@ const NotPound404 = () => {
     <>
       <AppLayout meta={meta}>
         <div id='404-page'>
-          <Block>
+          <Block styles={blockStyle}>
             <Header styles={headerStyle}><span><BiErrorCircle />에러 404</span></Header>
             <p css={pStyle}>페이지가 없습니다.</p>
             <Link href='/' passHref>
               <a css={linkStyle}><FaHome />홈으로 돌아가기</a>
             </Link>
           </Block>
+          <PostList posts={posts} hide={false} />
         </div>
       </AppLayout>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = () => {
+  const programming = getProgrammingMDX();
+  const webBasic = getWebBasicMDX();
+  const jsExtends = getJSExtendMDX();
+  const jsFront = getJSFrontMDX();
+  const jsBack = getJSBackMDX();
+
+  return {
+    props: {
+      posts: {
+        programming,
+        webBasic,
+        jsExtends,
+        jsFront,
+        jsBack,
+      },
+    },
+  };
 };
 
 export default NotPound404;

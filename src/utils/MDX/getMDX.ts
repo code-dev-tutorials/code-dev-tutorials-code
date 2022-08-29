@@ -1,4 +1,5 @@
 import { serialize } from 'next-mdx-remote/serialize';
+import remarkUnwrapImages from 'remark-unwrap-images';
 import { ISlug } from '@/types';
 import { getAllTimeMDX } from './getAllTimeMDX';
 
@@ -9,7 +10,9 @@ export const getMDX = async (slug: string): Promise<ISlug> => {
 
   const mdxSource = await serialize(content, {
     mdxOptions: {
-      remarkPlugins: [],
+      remarkPlugins: [
+        remarkUnwrapImages,
+      ],
       rehypePlugins: [],
     },
   });
