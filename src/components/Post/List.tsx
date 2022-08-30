@@ -17,7 +17,7 @@ export const List = ({ children, type: Type, }: IListProps) => {
       `);
     } else {
       setListStyle(css`
-        & li:before {
+        & li::before {
           ${tw`  `}
         }
       `);

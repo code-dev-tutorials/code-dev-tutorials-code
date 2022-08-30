@@ -23,9 +23,13 @@ export const MDXComponents = {
   p: (props: Props) => (
     <PostP>{props.children}</PostP>
   ),
-  img: (props: Props) => (
-    <PostImage src={props.src} alt={props.alt} />
-  ),
+  img: (props: Props) => {
+    console.log(props);
+
+    return (
+      <PostImage src={props.src} alt={props.alt} />
+    );
+  },
   strong: (props: Props) => (<Strong>{props.children}</Strong>),
   em: (props: Props) => (<Em>{props.children}</Em>),
   code: (props: Props) => (<Code>{props.children}</Code>),
